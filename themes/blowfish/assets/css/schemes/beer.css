@@ -1,23 +1,24 @@
 :root { 
+  --color-neutral: 255, 241, 202;
   /* Bleu clair */
-    --color-neutral-50:     255,255,255; /*  */
-    --color-neutral-100:    255,255,255; /*  */
-    --color-neutral-200:    255,255,255; /*  */
+    --color-neutral-50:     255,255,255; /* Light  */
+    --color-neutral-100:    255,255,255; /* Dark */
+    --color-neutral-200:    255,255,255; /* Light Contour */
     --color-neutral-300:    255,255,255; /*  */
-    --color-neutral-400:    217,4,41; /*  */
-    --color-neutral-500:    177,3,33; /*  */
-    --color-neutral-600:    137,3,26; /*  */
-    --color-neutral-700:    97,2,18; /*  */
-    --color-neutral-800:    57,1,11; /*  */
+    --color-neutral-400:    17,0,3; /* Dark footer */
+    --color-neutral-500:    197,128,0; /* Light footer */
+    --color-neutral-600:    197,128,0; /* ok */
+    --color-neutral-700:    17,0,3; /* Light Text */
+    --color-neutral-800:    197,128,0; /* Light Title & Dark Background */
     --color-neutral-900:    17,0,3; /*  */
-  /* Jaune */
+  /* Jaune 0,0,0; */
     --color-primary-50:     255,255,255;
     --color-primary-100:    255,255,255;
     --color-primary-200:    255,240,212;
     --color-primary-300:    255,213,136;
     --color-primary-400:    255,187,59;
     --color-primary-500:    238,155,0;
-    --color-primary-600:    197,128,0;
+    --color-primary-600:    197,128,0; /* Light links*/
     --color-primary-700:    156,102,0;
     --color-primary-800:    116,75,0;
     --color-primary-900:    75,49,0;

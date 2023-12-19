@@ -9,7 +9,7 @@ colorScheme = "beer"
 defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = true
 
-enableSearch = true
+enableSearch = false
 enableCodeCopy = true
 
 mainSections = ["docs"]
@@ -18,8 +18,8 @@ mainSections = ["docs"]
 disableImageOptimization = false
 disableTextInHeader = false
 
-defaultBackgroundImage = "/img/ocean.jpg"
-defaultFeaturedImage = "/img/ocean.jpg"
+defaultBackgroundImage = "/img/beer.jpg"
+defaultFeaturedImage = "/img/beer.jpg"
 
 highlightCurrentMenuArea = true
 smartTOC = true
@@ -126,12 +126,12 @@ smartTOCHideUnfocusedChildren = false
   # site = "ABC12345"
   # domain = "llama.yoursite.com"
 
-[buymeacoffee]
-  identifier = "nunocoracao"
-  globalWidget = true
-  globalWidgetMessage = ""
-  globalWidgetColor = "#FFDD00"
-  globalWidgetPosition = "Right"
+#[buymeacoffee]
+#  identifier = "nunocoracao"
+#  globalWidget = true
+#  globalWidgetMessage = ""
+#  globalWidgetColor = "#FFDD00"
+#  globalWidgetPosition = "Right"
 
 [verification]
   # google = ""
