@@ -64,6 +64,63 @@ body {
   /* 2 */
 }
 
+/* All CSS modifications here */
+/* ------------------------------------------------------------------------------------ */
+
+
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  /* background-position:center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /*max-width: 100%;
+  min-width: 0;
+  width: auto;*/
+  min-height: 500px; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
+  border: 0px solid #3C3C3C;
+  border-radius: 15px;
+  background-color: #FFDB58;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 0;
+
+}
+
+.map {
+  width: 98%;
+  height: 100%;
+  padding-bottom: 70%; /* if you change this, change the min-height of map-container as well*/
+  margin: auto;
+  border: 3px solid transparent;
+  border-radius: 15px;
+  background-color: #F9F9F9;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .outer-container {
+      display: block;
+  }
+
+  .map-container,
+  .button-container {
+      width: 100%;
+  }
+}
+
+
+
+
+
+/* ------------------------------------------------------------------------------------ */
 /*
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
@@ -5735,113 +5792,6 @@ pre {
   }
 }
 
-@media (min-width: 1536px) {
-  .2xl\:grid-w10 {
-    width: calc(10% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w15 {
-    width: calc(15% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w20 {
-    width: calc(20% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w25 {
-    width: calc(25% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w30 {
-    width: calc(30% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w33 {
-    width: calc(33% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w35 {
-    width: calc(35% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w40 {
-    width: calc(40% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w45 {
-    width: calc(45% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w50 {
-    width: calc(50% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w55 {
-    width: calc(55% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w60 {
-    width: calc(60% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w65 {
-    width: calc(65% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w66 {
-    width: calc(66% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w70 {
-    width: calc(70% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w75 {
-    width: calc(75% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w80 {
-    width: calc(80% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w85 {
-    width: calc(85% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w90 {
-    width: calc(90% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w95 {
-    width: calc(95% - 5px);
-    margin: 0px !important;
-  }
-
-  .2xl\:grid-w100 {
-    width: calc(100% - 5px);
-    margin: 0px !important;
-  }
-}
-
 /* Carousel Specific Styles */
 
 .ratio-16-9 {
@@ -5936,26 +5886,6 @@ pre {
   /* 21:9 Aspect Ratio */
 
   .xl\:ratio-32-9 {
-    padding-top: 28.125%;
-  }
-
-  /* 32:9 Aspect Ratio */
-}
-
-@media (min-width: 1536px) {
-  .2xl\:ratio-16-9 {
-    padding-top: 56.25%;
-  }
-
-  /* 16:9 Aspect Ratio */
-
-  .2xl\:ratio-21-9 {
-    padding-top: 42.85%;
-  }
-
-  /* 21:9 Aspect Ratio */
-
-  .2xl\:ratio-32-9 {
     padding-top: 28.125%;
   }
 
