@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
     d3.csv("https://raw.githubusercontent.com/ctaverni/whatareyoudrinking/clara/data/timeseries_average.csv", function(data) {
 
       // List of groups (here I have one group per column)
-      var allGroup1 = ["Carlsberg", "Diageo", "Heineken", "InBev", "MolsonCoors", "Others"]
+      var allGroup1 = ["Carlsberg", "Diageo", "Heineken", "ABinBev", "MolsonCoors", "Others"]
       var allYear1 = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"]
 
       // Reformat the data: we need an array of arrays of {x, y} tuples
