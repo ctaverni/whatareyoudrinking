@@ -25,6 +25,145 @@
 
     <main>
 
+        <div class="textbox">
+            <p>
+                Welcome to our data story, where we embark on a fascinating journey 
+                through the world of beers. Our goal? To compare and contrast the beers 
+                owned and produced by big companies and those crafted by small (and sometimes) 
+                independent breweries. The data you’ll encounter in this story is taken directly 
+                from Beer Advocate, a site focused on collecting reviews of beers from users all 
+                around the world. Armed with this data we will attempt to answer the question: 
+            </p>
+            <h1 style="text-align:center">
+                <b>When it comes to beer, does size matter?</b>
+            </h1>
+
+            <h1>2-Big Companies Everywhere</h1>
+        </div>
+        
+        <div class="textbox-title">
+            2 - Big Companies Everywhere
+        </div>
+
+        <div class="textbox">
+            <p>
+                Where does our beer come from? The beer market is highly complex, 
+                and in constant evolution. A large portion of said market is controlled 
+                by a small number of huge corporations. Did you know that 
+                Feldschlösschen, a Swiss brewer, is in fact owned by the Carlsberg 
+                Group, a Danish conglomerate!? Before embarking on this journey in 
+                data analysis, we didn’t either!
+            </p>
+            
+            <p>
+                Let’s start with a global view:
+            </p>
+
+        </div>       
+
+        <div class="map-container2">
+            <div id="map2" class="map2">
+                <svg id="goddamnmap" width="700" height="500"></svg>
+            </div>
+            <div id="data-buttons">
+                <button id="button1">ABInBev</button>
+                <button id="button2">Carlsberg</button>
+                <button id="button3">Diageo</button>
+                <button id="button4">Heineken</button>
+                <button id="button5">MolsonCoors</button>
+            </div>
+        </div>
+
+        <div class="textbox">
+            <p>
+                In fact, just 5 companies hold more than 50% of the global market share, 
+                and accumulation of said market has been growing in the past two decades, 
+                due to high M&A activity.  The gap between small breweries and large corporations 
+                has become starker by the year. The following graphs illustrate this impressive 
+                (and somewhat sobering) fact. We identified 5 of the largest 
+                players in the industry: AB InBev, Heineken, Carlsberg, Molson Coors and Diageo.
+
+            </p>
+            
+            <p>
+                Let’s start with a global view:
+            </p>
+
+        </div> 
+
+        <div class="plot-container">
+            <div class="lineplot-annualsales"></div>
+            <p style="color:white;"> Annual sales by companies </p>
+        </div>   
+        
+        
+        <div class="plot-container">
+            <div class="barplot-marketpart"></div>
+            <p style="color:white;">Mean ratings of big companies</p>
+        </div>
+
+        <div class="textbox">
+            <p>
+                Before getting into serious analysis, we must first answer 
+                the question: what makes a beer big? This question is not easy to answer, 
+                as there are small breweries owned by large groups, and as mentioned earlier, 
+                M&A activity and disposals are frequent.
+                What we did was consider the five companies mentioned above, and identify, 
+                year by year, what breweries they owned. A beer will henceforth be considered ‘big’ 
+                if it was brewed in a brewery owned by one of these groups, and ‘small’ otherwise. 
+                We will mention that our dataset contains about 5% of big beers.
+
+            </p>
+
+        </div> 
+
+        <div class="textbox-title">
+            3 - Big Companies Everywhere
+        </div>
+
+        <div class="textbox">
+            <p>
+                Let’s dig deeper into our data. We’ll start by looking at some of the values that we have, 
+                such as overall score, and ratings for different aspects: taste, palate, appearance and aroma. 
+                In the following graphs, we get a first glimpse at what these values look like when the dataset 
+                is broken up into six subsets: one for each company we consider, and one subset, ‘others’, 
+                that corresponds to small beers.
+            </p>
+        </div>
+        
+        
+
+
+
+        
+
+
+        <img 
+            src="https://github.com/ctaverni/whatareyoudrinking/blob/clara/data/OverallRatingsDistribution.jpeg?raw=true" 
+            alt="machin"
+            class="center" /> 
+
+        <img 
+            src="https://github.com/ctaverni/whatareyoudrinking/blob/clara/data/OtherParamsRatingsDistibution.jpeg?raw=true" 
+            alt="machin"
+            class="center" />        
+
+        <div class="textbox">    
+            <p>
+                Well, it looks like small beers are generally more appreciated, 
+                but let’s not jump to any conclusions! We’ll continue by getting 
+                a glance at our data from another angle. Every cook has a favorite 
+                recipe that they master to perfection. So, what beers does each company 
+                hold dear? 
+                <br>
+                <br>
+                In the following table, we show the top 3 rated beers from each company, 
+                along with its ranking among all beers, in order to get an idea of how the 
+                flagships of the big beer industry fare in the world of beer.
+            </p>    
+        </div>
+
+
         <div class="table-container">
             <div class="table">
                 <table>
@@ -68,52 +207,99 @@
                 </table>
             </div>
         </div>
-        
-        <div class="textbox">
-            <h1>Welcome to Beer. This is our data story!</h1>
-    
-            <p>Here's some placeholder text</p>
-        </div>
 
-        <div class="map-container2">
-            <div id="map2" class="map2">
-                <svg id="goddamnmap" width="700" height="500"></svg>
-            </div>
-            <div id="data-buttons">
-                <button id="button1">ABInBev</button>
-                <button id="button2">Carlsberg</button>
-                <button id="button3">Diageo</button>
-                <button id="button4">Heineken</button>
-                <button id="button5">MolsonCoors</button>
-                <button id="button5">Others</button>
-            </div>
-        </div>
+
+
 
 
         <div class="textbox">
-            Lorem ipsum dolor sit amet consectetur 
-            adipisicing elit. Repellat tenetur, eveniet
-            quasi dolore iure optio nostrum molestias,
-            in ad ipsum accusantium saepe exercitationem ipsam, 
-            adipisci alias quibusdam nulla blanditiis nihil!
-   
+            <p>
+                It looks like most of the staples of each company are fairly highly rated, 
+                but when we take the “Others” column into account, things start to change. 
+                Relative to small beers it seems like big beers are lower rated! But this is 
+                just the view from the top, and things up here are lonely sometimes. Let’s try 
+                getting some statistics into the mix, to see if we can truly say that smaller beers 
+                are more highly rated!
+                <br>
+                <br>
+                To verify this, we’ll do a hypothesis test: we define our null as ‘there is no significant difference in overall beer ratings due to beer size’, where ‘beer size’ refers to if the beer was produced by a big or a small brewery. However, before doing anything, we need to account for confounders! 
+                <br>
+                <br>
+                We do a first matching by users. That is, we restrain our dataset such that every review for a small beer is matched to a review for a big beer authored by the same person.
+                <br>
+                <br>
+                We also perform a different matching: this time, by style of beer and alcohol content - these are very important factors to take into account for beer!
+                <br>
+                <br>
+                Let’s have another look at the distribution of overall ratings by group, and for small beers.
+                <br>
+                <br>
+                <img 
+                src="https://github.com/ctaverni/whatareyoudrinking/blob/master/data/boxplot-aftermatching.jpeg?raw=true" 
+                alt="machin"
+                class="center" /> 
+
+                
+
+            </p>
         </div>
-        
-        <div class="plot-container">
-            <div class="barplot-stacked"></div>
+
+
+
+        <div class="textbox">
+            <p>
+                Again, we get the feeling that small beers have 
+                the upper hand. Maybe the love that the small 
+                brewers put into their beer vats made it all the 
+                way to BeerAdvocate.com! 
+                <br>
+                <br>
+                That was fun and all, but still a bit 
+                wishy-washy. It’s time to bring out 
+                some heavy machinery: a T-Test.
+                <br>
+                <br>
+                We perform a dependent relative T-Test in both cases, and get the following results:
+                <br>
+                <br>
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <td>t-test for 1st matching</td>
+                                <td>statistic: 0.5<br>p-value: 0.5</td>
+                            </tr>
+                            <tr>
+                                <td>t-test for 2nd matching</td>
+                                <td>statistic: 0.5<br>p-value: 0.5</td>
+                            </tr>
+                        </table>
+                    </div>
+                
+
+                <br>
+                We also perform a different matching: this time, by style of beer and 
+                alcohol content - these are very important factors to take into account for beer!
+                <br>
+                <br>
+                Wow! These results are very impressive! They allow us to very 
+                confidently assert that small beers are better rated than big beers. 
+                Take that, Heineken!
+
+            </p>
+        </div>
+
+        <div class="textbox-title">
+            Conclusion
         </div>
 
         <div class="textbox">
-            Text à rajouter
-        </div>
-
-        <div class="plot-container">
-            <div class="lineplot-annualsales"></div>
-            Annual sales by companies
-        </div>
-        
-        <div class="textbox">
-            Text à rajouter 2
+            <p>
+                The math does not lie: small beers are rated significantly 
+                better than big beers. This is bad news for beer enthusiasts 
+                - as we saw, huge beer conglomerates are increasingly taking 
+                over the global market. So when choosing a beer at your local 
+                pub, avoid Heineken and Guinness, and rather go for a Bière de Lausanne! 
+            </p>
         </div>
 
         <div class="plot-container">
@@ -121,24 +307,7 @@
             Mean ratings of big companies
         </div>
         
-        <div class="textbox">
-            Text à rajouter 3
-        </div>
 
-        <img 
-            src="https://github.com/ctaverni/whatareyoudrinking/blob/clara/data/OverallRatingsDistribution.jpeg?raw=true" 
-            alt="machin"
-            class="center" /> 
-
-        <img 
-            src="https://github.com/ctaverni/whatareyoudrinking/blob/clara/data/OtherParamsRatingsDistibution.jpeg?raw=true" 
-            alt="machin"
-            class="center" /> 
-        
-        <div class="plot-container">
-            <div class="barplot-marketpart"></div>
-            Mean ratings of big companies
-        </div>
         
     </main>
 

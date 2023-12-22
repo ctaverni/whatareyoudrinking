@@ -104,8 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       'button2': 'Carlsberg',
       'button3': 'Diageo',
       'button4': 'Heineken',
-      'button5': 'MolsonCoors',
-      'button6': 'Others'
+      'button5': 'MolsonCoors'
    };
 
    var colorSchemes = {
@@ -114,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
     'Diageo': ["#ffffff", "#d9d9d9", "#a6a6a6", "#808080", "#474747"],
     'Heineken': ["#ffffff", "#b3e0a6", "#66cd00", "#228b22", "#004d00"],
     'MolsonCoors': ["#ffffff", "#d2e7f2", "#add8e6", "#87ceeb", "#4682b4"],
-    'Others': ["#ffffff", "#ffccf2", "#ffd699", "#d9f2d9", "#b3e0fa"]
   };
 
     var minMaxValues = {
@@ -122,8 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       'Carlsberg': { min: 1, max: 5 },
       'Diageo': { min: 1, max: 2},
       'Heineken': { min: 1, max: 8},
-      'MolsonCoors': {min: 1, max: 5},
-      'Others': {min: 1, max: 15}
+      'MolsonCoors': {min: 1, max: 5}
    };
 
     var svgmap = d3.select("#goddamnmap"),
