@@ -4,33 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    {{ $js := resources.Get "../assets/js/home.js" }}
+    {{ $file := $js | resources.Minify }}
+    <script defer type="application/javascript" src="{{ $file.Permalink }}"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
     <!-- <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to Beer</h1>
-
-        <p>wow!</p>
-    </header>
 
 
     <main>
 
-            <div class = "map-container" style="grid-column: 2;">
-                <div id="map" class="map"></div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Emil</th>
+                        <th>Natalie</th>
+                        <th>John</th>
+                    </tr> 
+                    <tr>
+                        <th>Age</th>
+                        <td>46</td>
+                        <td>45</td>
+                        <td>44</td>
+                    </tr>
+                </table>
             </div>
-        <script>
-            var mapContainer = document.getElementById('map');
-            mapContainer.style.zIndex = 1;
-        </script>
+        </div>
+        
+        <div class="textbox">
+            <h1>Welcome to Beer. This is our data story!</h1>
+    
+            <p>Here's some placeholder text</p>
+        </div>
+
+        <div class="map-container" style="grid-column: 2;">
+            <div id="map" class="map"></div>
+            <div class ="graph-container">
+                <!-- <label for="data-slider">Year:</label>
+                <input type="range" id="data-slider" min="1" max="3" value="1" step="1"> -->
+            </div>
+        
+           
+            <div class="textbox-map">
+                <p><b>Place slider here?</b></p>
+            </div>
+            
+        </div>
+
+
+        <div class="textbox">
+            Lorem ipsum dolor sit amet consectetur 
+            adipisicing elit. Repellat tenetur, eveniet
+            quasi dolore iure optio nostrum molestias,
+            in ad ipsum accusantium saepe exercitationem ipsam, 
+            adipisci alias quibusdam nulla blanditiis nihil!
+   
+        </div>
+        
+        <div class="plot-container">
+            <div class="barplot-stacked"></div>
+        </div>
+
+
+        
     
     </main>
+
+
 
 
 
@@ -45,9 +98,7 @@
         </div>
 
     </footer> -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-    <script src="../assets/js/home.js"></script>
+
+
 </body>
 </html>

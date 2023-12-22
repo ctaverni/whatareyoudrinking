@@ -67,7 +67,10 @@ body {
 /* All CSS modifications here */
 /* ------------------------------------------------------------------------------------ */
 
-
+:root {
+  --box-bg-color: #ffdb58be;
+  --plot-bg-color: #fff3c9be;
+}
 
 .map-container {
   display: flex;
@@ -78,24 +81,25 @@ body {
   /*max-width: 100%;
   min-width: 0;
   width: auto;*/
-  min-height: 500px; /*dont forget padding-bottom in map*/
+  min-height: 400px; /*dont forget padding-bottom in map*/
   height: 100%;
   margin: auto;
   width: 80%;
   /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
   border: 0px solid #3C3C3C;
   border-radius: 15px;
-  background-color: #FFDB58;
+  background-color: var(--box-bg-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   top: 25px;
   z-index: 0;
-
+  text-align: center;
+  padding-bottom: 1%;
 }
 
 .map {
   width: 98%;
   height: 100%;
-  padding-bottom: 70%; /* if you change this, change the min-height of map-container as well*/
+  padding-bottom: 60%; /* if you change this, change the min-height of map-container as well*/
   margin: auto;
   border: 3px solid transparent;
   border-radius: 15px;
@@ -104,6 +108,120 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+.textbox {
+  width: 90%;
+  height: 100%;
+  margin: auto; 
+  padding-bottom: 3%;
+  padding-top: 3%;
+}
+.textbox-map {
+  width: 90%;
+  height: 100%;
+  margin: auto; 
+  padding-bottom: 1%;
+  padding-top: 0.5%;
+}
+
+.plot-container {
+  display: flex;
+  flex-direction: column;
+  /* background-position:center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /*max-width: 100%;
+  min-width: 0;
+  width: auto;*/
+  min-height: 400px; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
+  border: 0px solid #3C3C3C;
+  border-radius: 15px;
+  background-color: var(--plot-bg-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 0;
+  text-align: center;
+  padding-bottom: 1%;
+  padding-top: 2%;
+}
+
+.barplot-stacked { /* if you change this, change the min-height of map-container as well*/
+  margin: auto;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-height: auto; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  border: 0px solid #3C3C3C;
+  border-collapse: collapse;
+  border-radius: 15px;
+  background-color: var(--plot-bg-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 0;
+  text-align: center;
+  overflow: hidden;
+
+}
+
+.table {
+
+  min-height: auto; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: auto;
+  border: 0px solid #3C3C3C;
+  border-collapse: collapse;
+  border-radius: 15px;
+  background-color: #e1e0dbbe;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 0;
+  text-align: center;
+  overflow: hidden;
+
+}
+
+/* .table {
+  border-radius: 15px;
+  border-collapse: collapse;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+} */
+
+
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #9f8d00;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  color: black;
+  background-color: #ffffff;
+}
+
 
 @media screen and (max-width: 768px) {
   .outer-container {
