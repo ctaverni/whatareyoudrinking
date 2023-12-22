@@ -156,6 +156,13 @@ body {
   overflow: hidden;
 }
 
+.lineplot-annualsales { /* if you change this, change the min-height of map-container as well*/
+  margin: auto;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
