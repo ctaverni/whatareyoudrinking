@@ -661,7 +661,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Three function that change the tooltip when user hover / move / leave a cell
       var mouseover = function(d) {
         tooltip
-            .html("Company: " + d.Companies + "<br>" + "Market part: " + d.Values + "%")
+            .html("Company: " + d.Companies + "<br>" + "Market part: " + Math.round(y(d.Value)) + "%")
             .style("opacity", 1)
       }
       var mousemove = function(d) {

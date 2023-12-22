@@ -14,6 +14,7 @@ title = "*Who* are you drinking?"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [author]
+  name = "tornADA"
   image = "img/2chopes-tornada-2-modified.png"
   # links = [{ github = "https://github.com/epfl-ada/ada-2023-project-tornada" },]
 

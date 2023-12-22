@@ -173,13 +173,29 @@ body {
   background-color: #ccc;
 }
 
+img {
+  display: inline-block; /* or 'inline' */
+  margin-right: auto;
+}
+
 .textbox {
   width: 90%;
   height: 100%;
   margin: auto; 
-  padding-bottom: 3%;
+  padding-bottom: 4%;
   padding-top: 3%;
+  font-size: 1.5rem;
 }
+
+.textbox-title {
+  width: 90%;
+  height: 100%;
+  margin: auto; 
+  padding-bottom: 4%;
+  padding-top: 3%;
+  font-size: 3rem;
+}
+
 .textbox-map {
   width: 90%;
   height: 100%;
