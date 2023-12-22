@@ -244,11 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function make_lineplot_annualsales(){
     
     const domainY = 120;
-    const prewidth = 460;
+    const prewidth = 700;
     const preheight = 400;
     
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    var margin = {top: 10, right: 30, bottom: 30, left: 100},
     width = prewidth - margin.left - margin.right,
     height = preheight - margin.top - margin.bottom;
 
@@ -260,19 +260,20 @@ document.addEventListener("DOMContentLoaded", function () {
     .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-
+    
     //Read the data
-    d3.csv("data_connectedscatter.csv", function(data) {
+    d3.csv("https://raw.githubusercontent.com/ctaverni/whatareyoudrinking/clara/data/financialdata.csv", function(data) {
 
       // List of groups (here I have one group per column)
-      var allGroup = ["valueA", "valueB", "valueC"]
+      var allGroup = ["Molson-Coors", "AB inBev", "Heineken", "Carlsberg", "Asahi", "Diageo"]
+      var allYear = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"]
 
       // Reformat the data: we need an array of arrays of {x, y} tuples
-      var dataReady = allGroup.map( function(grpName) { // .map allows to do something for each element of the list
+      var dataReady = allGroup.map( function(bwrName) { // .map allows to do something for each element of the list
         return {
-          name: grpName,
+          name: bwrName,
           values: data.map(function(d) {
-            return {time: d.time, value: +d[grpName]};
+            return {year: d.year, value: +d[bwrName]};
           })
         };
       });
@@ -285,24 +286,48 @@ document.addEventListener("DOMContentLoaded", function () {
         .range(d3.schemeSet2);
 
       // Add X axis --> it is a date format
-      var x = d3.scaleLinear()
-        .domain([0,10])
-        .range([ 0, width ]);
+      var x = d3.scaleBand()
+        .domain(allYear)
+        .range([ 0, width ])
+      var xAxis = svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+      xAxis.select("path") //Axis 
+        .style("stroke","white");
+      xAxis.selectAll("line") //ticks
+        .style("stroke","white")
+      xAxis.selectAll("text")
+        .attr("fill", "white");
+      
+;
+
+      /*
+      var x = d3.scaleBand()
+        .domain(groups)
+        .range([0, width])
+        .padding([0.2])
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).tickSizeOuter(0));*/
 
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain( [0,20])
+        .domain( [0,50000000000])
         .range([ height, 0 ]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
+      var yAxis = svg.append("g")
+        .call(d3.axisLeft(y))
+      yAxis.select("path") //Axis 
+        .style("stroke","white");
+      yAxis.selectAll("line") //ticks
+        .style("stroke","white");
+      yAxis.selectAll("text")
+        .attr("fill", "white");
 
       // Add the lines
       var line = d3.line()
-        .x(function(d) { return x(+d.time) })
+        .x(function(d) { return x(+d.year) })
         .y(function(d) { return y(+d.value) })
+        .defined(function (d) { return d.value; });
       svg.selectAll("myLines")
         .data(dataReady)
         .enter()
@@ -314,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .style("fill", "none")
 
       // Add the points
-      svg
+      /*svg
         // First we need to enter in a group
         .selectAll("myDots")
         .data(dataReady)
@@ -327,13 +352,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .data(function(d){ return d.values })
         .enter()
         .append("circle")
-          .attr("cx", function(d) { return x(d.time) } )
+          .attr("cx", function(d) { return x(d.year) } )
           .attr("cy", function(d) { return y(d.value) } )
           .attr("r", 5)
-          .attr("stroke", "white")
-
-      // Add a label at the end of each line
-      
+          .attr("stroke", "white")*/
 
       // Add a legend (interactive)
       svg
@@ -342,8 +364,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .enter()
           .append('g')
           .append("text")
-            .attr('x', function(d,i){ return 30 + i*60})
-            .attr('y', 30)
+            .attr('x', 50)
+            .attr('y', function(d,i){ return 30 + i*25})
             .text(function(d) { return d.name; })
             .style("fill", function(d){ return myColor(d.name) })
             .style("font-size", 15)
