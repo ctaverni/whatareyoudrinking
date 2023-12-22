@@ -173,10 +173,6 @@ body {
   background-color: #ccc;
 }
 
-img {
-  display: inline-block; /* or 'inline' */
-  margin-right: auto;
-}
 
 .textbox {
   width: 90%;
