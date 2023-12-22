@@ -68,11 +68,19 @@ body {
 /* ------------------------------------------------------------------------------------ */
 
 :root {
-  --box-bg-color: #f9e7bd;
+  --box-bg-color: #ffdb58be;
   --plot-bg-color: #fff3c9be;
+  --boxplot-bg-color: #2a2101be;
   --tablecolorhead: #ffc61a;
   --tablecolor1: #c78856;
   --tablecolor2: #a2693b;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
 }
 
 .map-container {
@@ -111,7 +119,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 
 .map-container2 {
   display: flex;
@@ -197,14 +204,41 @@ body {
   /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
   border: 0px solid #3C3C3C;
   border-radius: 15px;
-  background-color: var(--plot-bg-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--boxplot-bg-color);
+  /*box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);*/
   top: 25px;
   z-index: 0;
   text-align: center;
   padding-bottom: 1%;
   padding-top: 2%;
 }
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  /* background-position:center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /*max-width: 100%;
+  min-width: 0;
+  width: auto;*/
+  min-height: 400px; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
+  border: 0px solid #3c3c3c00;
+  border-radius: 15px;
+  background-color: var(--boxplot-bg-color);
+  /*box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);*/
+  top: 25px;
+  z-index: 0;
+  text-align: center;
+  padding-bottom: 1%;
+  padding-top: 2%;
+}
+
+
 
 .barplot-stacked { /* if you change this, change the min-height of map-container as well*/
   margin: auto;
@@ -220,13 +254,20 @@ body {
   overflow: hidden;
 }
 
+.barplot-marketpart{ /* if you change this, change the min-height of map-container as well*/
+  margin: auto;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
   min-height: auto; /*dont forget padding-bottom in map*/
   height: 100%;
   margin: auto;
-  width: 100%;
+  width: 80%;
   border: 0px solid #3C3C3C;
   border-collapse: collapse;
   border-radius: 15px;
@@ -245,11 +286,10 @@ body {
   height: 100%;
   margin: auto;
   width: auto;
-  min-width: 500px;
   border: 0px solid #3C3C3C;
   border-collapse: collapse;
   border-radius: 15px;
-  background-color: var(--tablecolor2);
+  background-color: #e1e0dbbe;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   top: 25px;
   z-index: 0;
@@ -277,19 +317,19 @@ body {
 }
 
 th, td {
-  border: 1px solid white;
+  border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
 }
 
 th {
-  background-color: var(--tablecolorhead);
+  background-color: #9f8d00;
   color: #fff;
 }
 
 tr:nth-child(even) {
   color: black;
-  background-color: var(--tablecolor1);
+  background-color: #ffffff;
 }
 
 
