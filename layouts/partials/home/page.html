@@ -15,6 +15,7 @@
     <script defer type="application/javascript" src="{{ $file.Permalink }}"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
     <!-- <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
@@ -29,17 +30,42 @@
             <div class="table">
                 <table>
                     <tr>
-                        <th>Name</th>
-                        <th>Emil</th>
-                        <th>Natalie</th>
-                        <th>John</th>
-                    </tr> 
-                    <tr>
-                        <th>Age</th>
-                        <td>46</td>
-                        <td>45</td>
-                        <td>44</td>
+                        <th class = firstcell>Placement</th>
+                        <th>Carlsberg</th>
+                        <th>Diageo</th>
+                        <th>Heineken</th>
+                        <th>InBev</th>
+                        <th>MolsonCoors</th>
+                        <th>Others</th>
                     </tr>
+                    <tr>
+                        <td> <b># 1</b></td>
+                        <td><i>Carnegie Porter 5,5%</i> <b>(4.16)</b></td>
+                        <td><i>Guinness Special Export Stout / Antwerpen Stout</i> <b>(4.12)</b></td>
+                        <td><i>High West-ified Imperial Coffee Stout</i> <b>(4.37)</b></td>
+                        <td><i>Proprietor's Bourbon County Brand Stout</i> <b>(4.70)</b></td>
+                        <td><i>Mosaic Double IPA</i> <b>(4.32)</b></td>
+                        <td><i>Kentucky Brunch Brand Stout</i> <b>(4.84)</b></td>
+                    </tr>
+                    <tr>
+                        <td> <b># 2</b></td>
+                        <td><i>Sinebrychoff Porter</i> <b>(4.16)</b></td>
+                        <td><i>Guinness Foreign Extra Stout</i> <b>(4.08)</b></td>
+                        <td><i>Born Yesterday APA</i> <b>(4.37)</b></td>
+                        <td><i>Rare Bourbon County Stout</i> <b>(4.69)</b></td>
+                        <td><i>Terrapin Cinnamon Roll'd WnB Oatmeal Stout</i> <b>(4.25)</b></td>
+                        <td><i>Good Morning</i> <b>(4.79)</b></td>
+                    </tr>
+                    <tr>
+                        <td> <b># 3</b></td>
+                        <td>Okocim Porter</td>
+                        <td><i>West Indies Porter</i> <b>(4.78)</b></td>
+                        <td><i>The Waldos' Special Ale</i> <b>(4.31)</b></td>
+                        <td><i>Nutulhu</i> <b>(4.68)</b></td>
+                        <td><i>W-n-B Coffee Oatmeal Imperial Stout</i> <b>(4.21)</b></td>
+                        <td><i>R&D Sour Fruit (Very Sour Blackberry)</i> <b>(4.77)</b></td>
+                    </tr>
+                    
                 </table>
             </div>
         </div>
@@ -50,21 +76,21 @@
             <p>Here's some placeholder text</p>
         </div>
 
-        <div class="map-container" style="grid-column: 2;">
-            <div id="map" class="map"></div>
-            <div class ="graph-container">
-                <!-- <label for="data-slider">Year:</label>
-                <input type="range" id="data-slider" min="1" max="3" value="1" step="1"> -->
+        <div class="map-container2">
+            <div id="map2" class="map2">
+                <svg id="goddamnmap" width="700" height="500"></svg>
             </div>
-        
-           
-            <div class="textbox-map">
-                <p><b>Place slider here?</b></p>
+            <div id="data-buttons">
+                <button id="button1">ABInBev</button>
+                <button id="button2">Carlsberg</button>
+                <button id="button3">Diageo</button>
+                <button id="button4">Heineken</button>
+                <button id="button5">MolsonCoors</button>
+                <button id="button5">Others</button>
             </div>
-            
         </div>
 
-
+        
         <div class="textbox">
             Lorem ipsum dolor sit amet consectetur 
             adipisicing elit. Repellat tenetur, eveniet
@@ -73,6 +99,7 @@
             adipisci alias quibusdam nulla blanditiis nihil!
    
         </div>
+        
         
         <div class="plot-container">
             <div class="barplot-stacked"></div>

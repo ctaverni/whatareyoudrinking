@@ -7,29 +7,13 @@ var layouts = [
 ]
 
 //  Change for beer groups
-const colorMapping = {
-  'Government (Diplomatic)': '#FFA500', // Orange
-  'Government (General)': '#4B0082', // Indigo
-  'Military': '#000080', // Navy Blue
-  'Maritime': '#0000FF', // Blue
-  'Transportation': '#006400', // Dark Green
-  'Police': '#008000', // Green
-  'Utilities': '#00FFFF', // Cyan
-  'Tourists': '#6A5ACD', // Slate Blue
-  'Business': '#FF00FF', // Magenta
-  'Private Citizens & Property': '#FF0000', // Red
-  'Violent Political Party': '#FF69B4', // Hot Pink
-  'Religious Figures/Institutions': '#FFD700', // Gold
-  'Telecommunication': '#87CEFA', // Light Sky Blue
-  'Journalists & Media': '#FFFF00', // Yellow
-  'Unknown': '#808080', // Gray
-  'Airports & Aircraft': '#800080', // Purple
-  'Educational Institution': '#800000', // Maroon
-  'Terrorists/Non-State Militia': '#800000', // Maroon
-  'NGO': '#ADFF2F', // Green Yellow
-  'Food or Water Supply': '#CD5C5C', // Indian Red
-  'Other': '#A0522D', // Sienna
-  'Abortion Related': '#C71585' // Medium Violet Red
+const beerColorMapping = {
+  ABInBev: '#FFE500',      // Budweiser Gold
+  Asahi: '#F9C846',        // Asahi Super Dry Amber
+  Carlsberg: '#00A63E',    // Carlsberg Green
+  Diageo: '#231F20',       // Guinness Black
+  Heineken: '#00A100',     // Heineken Green
+  MolsonCoors: '#E23B01'   // Coors Original Red
 };
 
 const countryNames = ['World', 'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia-Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Czechoslovakia', 'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Germany (GDR)', 'East Timor', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guadeloupe', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'International', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Ivory Coast', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Martinique', 'Mauritania', 'Mauritius', 'Mexico', 'Moldova', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nepal', 'Netherlands', 'New Caledonia', 'New Hebrides', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Yemen', 'Norway', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', "People's Republic of the Congo", 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Republic of the Congo', 'Rhodesia', 'Romania', 'Russia', 'Rwanda', 'Saudi Arabia', 'Senegal', 'Serbia', 'Serbia-Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovak Republic', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'South Yemen', 'Soviet Union', 'Spain', 'Sri Lanka', 'St. Kitts and Nevis', 'St. Lucia', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Wallis and Futuna', 'West Bank and Gaza Strip', 'West Germany (FRG)', 'Western Sahara', 'Yemen', 'Yugoslavia', 'Zaire', 'Zambia', 'Zimbabwe'];
@@ -109,52 +93,52 @@ function switchList() {
 document.addEventListener("DOMContentLoaded", function () {
    
   
-  function makemap(){
-    // Define variables for the map container and switch button
-    var mapContainer_ = document.querySelector(".map"); // selects an HTML element with class map and saves it as "mapContainer_"
-    // mapContainer_.style.borderRadius = "0";
-    // mapContainer_.style.display = "none";
+  // function makemap(){
+  //   // Define variables for the map container and switch button
+  //   var mapContainer_ = document.querySelector(".map"); // selects an HTML element with class map and saves it as "mapContainer_"
+  //   // mapContainer_.style.borderRadius = "0";
+  //   // mapContainer_.style.display = "none";
+   
+  //   var mymap = L.map('map', {
+  //     minZoom: 2 // Set the minimum zoom level
+  //   }).setView([46.5197, 6.6323],5);
 
-    var mymap = L.map('map', {
-      minZoom: 2 // Set the minimum zoom level
-    }).setView([46.5197, 6.6323],5);
-
-
-    // Set the maximum bounds of the map to prevent repetitions
-    var southWest = L.latLng(-90, -180);
-    var northEast = L.latLng(90, 180);
-    var bounds = L.latLngBounds(southWest, northEast);
-    mymap.setMaxBounds(bounds);
-    mymap.on('drag', function () {
-        mymap.panInsideBounds(bounds, { animate: false });
-    });
-
-
-
-    // mymap.createPane('labels');
-    // mymap.getPane('labels').style.zIndex = 650;
-    // mymap.getPane('labels').style.pointerEvents = 'none';
+   
+  //   // Set the maximum bounds of the map to prevent repetitions
+  //   var southWest = L.latLng(-90, -180);
+  //   var northEast = L.latLng(90, 180);
+  //   var bounds = L.latLngBounds(southWest, northEast);
+  //   mymap.setMaxBounds(bounds);
+  //   mymap.on('drag', function () {
+  //       mymap.panInsideBounds(bounds, { animate: false });
+  //   });
 
 
-    var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      attribution: '©OpenStreetMap, ©CartoDB'
-    }).addTo(mymap);
 
-    var mapContainer = document.getElementById('map');
-    mapContainer.style.zIndex = 1;
-    positron.setZIndex(1);
+  //   // mymap.createPane('labels');
+  //   // mymap.getPane('labels').style.zIndex = 650;
+  //   // mymap.getPane('labels').style.pointerEvents = 'none';
 
-    var div = L.DomUtil.get('no-scrolling-clicking');
-    L.DomEvent.on(div, 'mousewheel', L.DomEvent.stopPropagation);
-    L.DomEvent.on(div, 'click', L.DomEvent.stopPropagation);
+
+  //   var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  //     attribution: '©OpenStreetMap, ©CartoDB'
+  //   }).addTo(mymap);
+
+  //   var mapContainer = document.getElementById('map');
+  //   mapContainer.style.zIndex = 1;
+  //   positron.setZIndex(10);
+
+  //   var div = L.DomUtil.get('no-scrolling-clicking');
+  //   L.DomEvent.on(div, 'mousewheel', L.DomEvent.stopPropagation);
+  //   L.DomEvent.on(div, 'click', L.DomEvent.stopPropagation);
 
     
 
-    mymap.on('dragstart', function (event) {
-      event.preventDefault();
-    });
+  //   mymap.on('dragstart', function (event) {
+  //     event.preventDefault();
+  //   });
 
-  }
+  // }
  
   function make_barplot_stacked(){
 
@@ -166,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     width = prewidth - margin.left - margin.right,
     height = preheight - margin.top - margin.bottom;
 
-    var svg = d3.select(".barplot-stacked")
+    var svgbpl = d3.select(".barplot-stacked")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -183,14 +167,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .domain(groups)
         .range([0, width])
         .padding([0.2])
-      svg.append("g")
+      svgbpl.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).tickSizeOuter(0));
 
       var y = d3.scaleLinear()
         .domain([0, domainY])
         .range([ height, 0 ]);
-      svg.append("g")
+      svgbpl.append("g")
         .call(d3.axisLeft(y));
 
       var color = d3.scaleOrdinal()
@@ -219,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .style("opacity",0.8)
         }
 
-      svg.append("g")
+      svgbpl.append("g")
         .selectAll("g")
         // Enter in the stack data = loop key per key = group per group
         .data(stackedData)
@@ -253,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
     height = preheight - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    var svg = d3.select(".lineplot-annualsales")
+    var svglpl = d3.select(".lineplot-annualsales")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -273,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var x = d3.scaleLinear()
       .domain(d3.extent(data, function(d) { return d.year; }))
       .range([ 0, width ]);
-      svg.append("g")
+      svglpl.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(5));
 
@@ -281,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var y = d3.scaleLinear()
       .domain([0, d3.max(data, function(d) { return +d.n; })])
       .range([ height, 0 ]);
-      svg.append("g")
+      svglpl.append("g")
       .call(d3.axisLeft(y));
 
       // color palette
@@ -291,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
 
       // Draw the line
-      svg.selectAll(".line")
+      svglpl.selectAll(".line")
         .data(sumstat)
         .enter()
         .append("path")
@@ -311,9 +295,194 @@ document.addEventListener("DOMContentLoaded", function () {
     
   }
 
+  // function makemap2electricboogaloo(){
+
+  //   var svgmap = d3.select("#goddamnmap"),
+  //     widthmap = +svgmap.attr("width"),
+  //     heightmap = +svgmap.attr("height");
+
+
+  //    var projection = d3.geoNaturalEarth1()
+  //    .scale(widthmap / 1.3 / Math.PI)
+  //    .translate([widthmap / 2, heightmap / 2])
+
+
+  //   d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+
+  //       // Draw the map
+  //       svgmap.append("g")
+  //           .selectAll("path")
+  //           .data(data.features)
+  //           .enter().append("path")
+  //               .attr("fill", "#69b3a2")
+  //               .attr("d", d3.geoPath()
+  //                   .projection(projection)
+  //               )
+  //               .style("stroke", "#fff")
+  //   })
+  // }
+
+
+  function makemap2electricboogaloo(){
+
+    var datasetNames = {
+      'button1': 'ABInBev',
+      'button2': 'Carlsberg',
+      'button3': 'Diageo',
+      'button4': 'MolsonCoors',
+      'button5': 'Others'
+   };
+
+    var svgmap = d3.select("#goddamnmap"),
+      widthmap = +svgmap.attr("width"),
+      heightmap = +svgmap.attr("height");
+
+
+    var projection = d3.geoMercator()
+      .scale(120)
+      .center([10,50])
+      .translate([widthmap /2, heightmap /2]);
+
+
+    var mapdata = d3.map();
+    var colorScale = d3.scaleThreshold()
+      .domain([1, 5, 9, 10])
+
+    var infoBox = svgmap.append("text")
+      .attr("class", "infoBox")
+      .attr("x", 300) // Set x position
+      .attr("y", heightmap - 20) // Set y position
+      .style("font-size", "16px");
+
+    function drawMap(topo) {
+      // Draw the map
+      svgmap.append("g")
+          .selectAll("path")
+          .data(topo.features)
+          .enter()
+          .append("path")
+          .attr("d", d3.geoPath().projection(projection))
+          // set the color of each country
+          .attr("fill", function (d) {
+            d.total = mapdata.get(d.id) || 0;
+            return colorScale(d.total);
+          })
+          .style("stroke", "black")
+          .attr("class", function(d){ return "Country" } )
+          .style("opacity", .8)
+          .on("mouseover", mouseOver )
+          .on("mouseleave", mouseLeave );
+      
+      // Legend!
+      var legend = svgmap.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(" + (widthmap - 100) + "," + 20 + ")")
+        .selectAll("g")
+        .data(colorScale.domain().slice().reverse())
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
   
+      legend.append("rect")
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", colorScale);
+  
+      legend.append("text")
+        .attr("x", 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .text(function(d) { return "≥ " + d; });
+    } 
+
+
+    function mouseOver(d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(200)
+        .style("opacity", .5)
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .style("opacity", 0.8)
+        .style("stroke", "black")
+
+      var countryData = mapdata.get(d.id) || 0;
+      infoBox.text(d.properties.name + ": " + countryData + " breweries")
+        .style("font-weight", "bold");
+    }
+
+
+    function mouseLeave(d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(200)
+        .style("opacity", 0.8)
+      d3.select(this)
+        .transition()
+        .duration(200)
+      // ... existing mouseLeave code ...
+      infoBox.text('');
+    }
+
+    function loadData(buttonId) {
+      var index = parseInt(buttonId.replace('button', ''), 10) - 1;
+      var colorSchemes = [d3.schemeBlues, d3.schemeGreens, d3.schemeReds, d3.schemePurples, d3.schemeOranges];
+
+      colorScale.range(colorSchemes[index]);
+  
+      var datasetName = datasetNames[buttonId];
+      var dataUrl = `https://raw.githubusercontent.com/epfl-ada/ada-2023-project-tornada/kajetan/plot_data/BA/breweries_countries/only_2017_with_full_codes/${datasetName}.csv`;
+  
+      d3.csv(dataUrl, function(d) {
+        if (error) throw error;
+
+        data.forEach(function(d){
+          mapdata.set(d.code, +d.nbr_breweries);
+        });
+          
+        d3.selectAll(".Country")
+        .transition()
+        .style("fill", function (d) {
+            d.total = mapdata.get(d.id) || 0;
+            return colorScale(d.total);
+        });
+
+
+      });
+
+
+
+    }
+
+    d3.queue()
+      .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
+      .await(ready);
+        
+    function ready(error, topo) {
+      if (error) throw error;
+      drawMap(topo);
+      loadData(0); // Load the first dataset by default
+    }
+
+    d3.selectAll("#data-buttons button").on("click", function() {
+      d3.selectAll("#data-buttons button").classed("active", false);
+      d3.select(this).classed("active", true);
+      loadData(this.id);
+    });
+
+  }
+
+
+
+
+
+
+
+  makemap2electricboogaloo();
   make_barplot_stacked();
   make_lineplot_annualsales();
-  makemap();
+  // makemap();
+
+
 
 });
