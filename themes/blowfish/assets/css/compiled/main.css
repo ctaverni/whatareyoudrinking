@@ -71,6 +71,9 @@ body {
   --box-bg-color: #ffdb58be;
   --plot-bg-color: #fff3c9be;
   --boxplot-bg-color: #2a2101be;
+  --tablecolorhead: #ffc61a;
+  --tablecolor1: #c78856;
+  --tablecolor2: #a2693b;
 }
 
 .center {
@@ -115,6 +118,59 @@ body {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+}
+
+.map-container2 {
+  display: flex;
+  flex-direction: column;
+  /* background-position:center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /*max-width: 100%;
+  min-width: 0;
+  width: auto;*/
+  min-height: 400px; /*dont forget padding-bottom in map*/
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  /* 9/16 * 100% = 56.25% for a 16:9 aspect ratio; adjust this value based on your desired aspect ratio */
+  border: 0px solid #3C3C3C;
+  border-radius: 15px;
+  background-color: var(--box-bg-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 0;
+  text-align: center;
+  padding-bottom: 1%;
+}
+.map2 {
+  width: 98%;
+  height: 100%;
+  margin: auto;
+  border: 3px solid transparent;
+  padding-bottom: 5%;
+  border-radius: 15px;
+  background-color: #fbe9c8;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+#goddamnmap {
+  width: auto;
+  display: block;
+  margin: auto;
+  height: auto;
+}
+
+#data-buttons button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+}
+#data-buttons button.active {
+  background-color: #ccc;
 }
 
 .textbox {
@@ -198,7 +254,7 @@ body {
   overflow: hidden;
 }
 
-.barplot_marketpart{ /* if you change this, change the min-height of map-container as well*/
+.barplot-marketpart{ /* if you change this, change the min-height of map-container as well*/
   margin: auto;
   background-color: transparent;
   position: relative;
@@ -253,7 +309,12 @@ body {
 
 } */
 
-
+.firstcell {
+  border: 3px solid;
+  padding: 12px;
+  text-align: center;
+  color: white;
+}
 
 th, td {
   border: 1px solid #ddd;

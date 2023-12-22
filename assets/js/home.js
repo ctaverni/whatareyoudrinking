@@ -7,30 +7,19 @@ var layouts = [
 ]
 
 //  Change for beer groups
-const colorMapping = {
-  'Government (Diplomatic)': '#FFA500', // Orange
-  'Government (General)': '#4B0082', // Indigo
-  'Military': '#000080', // Navy Blue
-  'Maritime': '#0000FF', // Blue
-  'Transportation': '#006400', // Dark Green
-  'Police': '#008000', // Green
-  'Utilities': '#00FFFF', // Cyan
-  'Tourists': '#6A5ACD', // Slate Blue
-  'Business': '#FF00FF', // Magenta
-  'Private Citizens & Property': '#FF0000', // Red
-  'Violent Political Party': '#FF69B4', // Hot Pink
-  'Religious Figures/Institutions': '#FFD700', // Gold
-  'Telecommunication': '#87CEFA', // Light Sky Blue
-  'Journalists & Media': '#FFFF00', // Yellow
-  'Unknown': '#808080', // Gray
-  'Airports & Aircraft': '#800080', // Purple
-  'Educational Institution': '#800000', // Maroon
-  'Terrorists/Non-State Militia': '#800000', // Maroon
-  'NGO': '#ADFF2F', // Green Yellow
-  'Food or Water Supply': '#CD5C5C', // Indian Red
-  'Other': '#A0522D', // Sienna
-  'Abortion Related': '#C71585' // Medium Violet Red
+const beerColorMapping = {
+  "AB-InBev": '#ffe500',      // Budweiser Gold
+  "Asahi": '#F9C846',        // Asahi Super Dry Amber
+  "Carlsberg": '#9d028a',    // Carlsberg Green
+  "Diageo": '#231F20',       // Guinness Black
+  "Heineken": '#00A100',     // Heineken Green
+  "MolsonCoors": '#E23B01',   // Coors Original Red
+  "Others": '#ffcdf9'
 };
+
+function getColor(value) {
+  return beerColorMapping[value] || 'gray'; // Return color from mapping or a default color
+}
 
 const countryNames = ['World', 'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia-Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Czechoslovakia', 'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Germany (GDR)', 'East Timor', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guadeloupe', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'International', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Ivory Coast', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Martinique', 'Mauritania', 'Mauritius', 'Mexico', 'Moldova', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nepal', 'Netherlands', 'New Caledonia', 'New Hebrides', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Yemen', 'Norway', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', "People's Republic of the Congo", 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Republic of the Congo', 'Rhodesia', 'Romania', 'Russia', 'Rwanda', 'Saudi Arabia', 'Senegal', 'Serbia', 'Serbia-Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovak Republic', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'South Yemen', 'Soviet Union', 'Spain', 'Sri Lanka', 'St. Kitts and Nevis', 'St. Lucia', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Wallis and Futuna', 'West Bank and Gaza Strip', 'West Germany (FRG)', 'Western Sahara', 'Yemen', 'Yugoslavia', 'Zaire', 'Zambia', 'Zimbabwe'];
 
@@ -108,50 +97,208 @@ function switchList() {
 
 document.addEventListener("DOMContentLoaded", function () {
    
+  function makemap2electricboogaloo(){
+
+    var datasetNames = {
+      'button1': 'ABInBev',
+      'button2': 'Carlsberg',
+      'button3': 'Diageo',
+      'button4': 'Heineken',
+      'button5': 'MolsonCoors',
+      'button6': 'Others'
+   };
+
+   var colorSchemes = {
+    'ABInBev': ["#ffffff", "#ffe0cc", "#ffac1c", "#ff4500", "#dc143c"],
+    'Carlsberg': ["#ffffff", "#d4f0e4", "#a3e4d7", "#28b463", "#186a3b"],
+    'Diageo': ["#ffffff", "#d9d9d9", "#a6a6a6", "#808080", "#474747"],
+    'Heineken': ["#ffffff", "#b3e0a6", "#66cd00", "#228b22", "#004d00"],
+    'MolsonCoors': ["#ffffff", "#d2e7f2", "#add8e6", "#87ceeb", "#4682b4"],
+    'Others': ["#ffffff", "#ffccf2", "#ffd699", "#d9f2d9", "#b3e0fa"]
+  };
+
+    var minMaxValues = {
+      'ABInBev': { min: 1, max: 11 },
+      'Carlsberg': { min: 1, max: 5 },
+      'Diageo': { min: 1, max: 2},
+      'Heineken': { min: 1, max: 8},
+      'MolsonCoors': {min: 1, max: 5},
+      'Others': {min: 1, max: 15}
+   };
+
+    var svgmap = d3.select("#goddamnmap"),
+      widthmap = +svgmap.attr("width"),
+      heightmap = +svgmap.attr("height");
+
+
+    var projection = d3.geoMercator()
+      .scale(120)
+      .center([10,50])
+      .translate([widthmap /2, heightmap /2]);
+
+
+    var mapdata = d3.map();
+    var colorScale = d3.scaleThreshold()
+
+
+    var infoBox = svgmap.append("text")
+      .attr("class", "infoBox")
+      .attr("x", 300) // Set x position
+      .attr("y", heightmap - 20) // Set y position
+      .style("font-size", "16px");
+
+    function drawMap(topo) {
+      // Draw the map
+      svgmap.append("g")
+          .selectAll("path")
+          .data(topo.features)
+          .enter()
+          .append("path")
+          .attr("d", d3.geoPath().projection(projection))
+          // set the color of each country
+          .attr("fill", function (d) {
+            d.total = mapdata.get(d.id) || 0;
+            return colorScale(d.total);
+          })
+          .style("stroke", "black")
+          .attr("class", function(d){ return "Country" } )
+          .style("opacity", .8)
+          .on("mouseover", mouseOver )
+          .on("mouseleave", mouseLeave );
+      
+      // Legend!
+      var legend = svgmap.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(" + (widthmap - 100) + "," + 20 + ")")
+        .selectAll("g")
+        .data(colorScale.domain().slice().reverse())
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
   
-  function makemap(){
-    // Define variables for the map container and switch button
-    var mapContainer_ = document.querySelector(".map"); // selects an HTML element with class map and saves it as "mapContainer_"
-    // mapContainer_.style.borderRadius = "0";
-    // mapContainer_.style.display = "none";
+      legend.append("rect")
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", colorScale);
+  
+      legend.append("text")
+        .attr("x", 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .text(function(d) { return "≥ " + d; });
+    } 
 
-    var mymap = L.map('map', {
-      minZoom: 2 // Set the minimum zoom level
-    }).setView([46.5197, 6.6323],5);
-
-
-    // Set the maximum bounds of the map to prevent repetitions
-    var southWest = L.latLng(-90, -180);
-    var northEast = L.latLng(90, 180);
-    var bounds = L.latLngBounds(southWest, northEast);
-    mymap.setMaxBounds(bounds);
-    mymap.on('drag', function () {
-        mymap.panInsideBounds(bounds, { animate: false });
-    });
-
-
-
-    // mymap.createPane('labels');
-    // mymap.getPane('labels').style.zIndex = 650;
-    // mymap.getPane('labels').style.pointerEvents = 'none';
-
-
-    var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      attribution: '©OpenStreetMap, ©CartoDB'
-    }).addTo(mymap);
-
-    var mapContainer = document.getElementById('map');
-    mapContainer.style.zIndex = 1;
-    positron.setZIndex(1);
-
-    var div = L.DomUtil.get('no-scrolling-clicking');
-    L.DomEvent.on(div, 'mousewheel', L.DomEvent.stopPropagation);
-    L.DomEvent.on(div, 'click', L.DomEvent.stopPropagation);
-
+    function calculateLegendSteps(min, max) {
+      var steps = [];
+      var stepSize = (max - min) / 4;
+  
+      for (var i = 0; i < 4; i++) {
+          steps.push(Math.round(min + stepSize * i));
+      }
+  
+      return steps;
+    }
     
+    function updateLegend(legendSteps, colorScale) {
+      // Remove existing legend
+      svgmap.select(".legend").remove();
+  
+      // Create new legend
+      var legend = svgmap.append("g")
+          .attr("class", "legend")
+          .attr("transform", "translate(" + (widthmap - 100) + "," + 20 + ")");
+  
+      legend.selectAll("rect")
+          .data(legendSteps)
+          .enter().append("rect")
+          .attr("x", 0)
+          .attr("y", function(d, i) { return i * 20; })
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", function(d) { return colorScale(d); });
+  
+      legend.selectAll("text")
+          .data(legendSteps)
+          .enter().append("text")
+          .attr("x", 24)
+          .attr("y", function(d, i) { return i * 20 + 9; })
+          .attr("dy", ".35em")
+          .text(function(d) { return "≥ " + d; });
+    }
 
-    mymap.on('dragstart', function (event) {
-      event.preventDefault();
+
+    function mouseOver(d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(200)
+        .style("opacity", .5)
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .style("opacity", 0.8)
+        .style("stroke", "black")
+
+      var countryData = mapdata.get(d.id) || 0;
+      infoBox.text(d.properties.name + ": " + countryData + " breweries")
+        .style("font-weight", "bold");
+    }
+
+
+    function mouseLeave(d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(200)
+        .style("opacity", 0.8)
+      d3.select(this)
+        .transition()
+        .duration(200)
+      // ... existing mouseLeave code ...
+      infoBox.text('');
+    }
+
+    function loadData(buttonId) {  
+      var datasetName = datasetNames[buttonId];
+      var dataUrl = `https://raw.githubusercontent.com/epfl-ada/ada-2023-project-tornada/kajetan/plot_data/BA/breweries_countries/only_2017_with_full_codes/${datasetName}.csv`;
+
+      var currentMinMax = minMaxValues[datasetName];
+      var legendSteps = calculateLegendSteps(currentMinMax.min, currentMinMax.max);
+      colorScale.domain(legendSteps);
+
+      colorScale.range(colorSchemes[datasetName]);
+
+      d3.csv(dataUrl, function(error,data) {
+        if (error) throw error;
+
+        data.forEach(function(d){
+          mapdata.set(d.code, +d.nbr_breweries);
+        });
+          
+        d3.selectAll(".Country")
+          .transition()
+          .style("fill", function (d) {
+            d.total = mapdata.get(d.id) || 0;
+            return colorScale(d.total);
+        });
+
+
+        updateLegend(legendSteps, colorScale);
+      });
+
+    }
+
+    d3.queue()
+      .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
+      .await(ready);
+        
+    function ready(error, topo) {
+      if (error) throw error;
+      drawMap(topo);
+      loadData('button1'); // Load the first dataset by default
+    }
+
+    d3.selectAll("#data-buttons button").on("click", function() {
+      d3.selectAll("#data-buttons button").classed("active", false);
+      d3.select(this).classed("active", true);
+      loadData(this.id);
     });
 
   }
@@ -264,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
     d3.csv("https://raw.githubusercontent.com/ctaverni/whatareyoudrinking/clara/data/timeseries_average.csv", function(data) {
 
       // List of groups (here I have one group per column)
-      var allGroup1 = ["Carlsberg", "Diageo", "Heineken", "ABinBev", "MolsonCoors", "Others"]
+      var allGroup1 = ["Carlsberg", "Diageo", "Heineken", "AB-InBev", "MolsonCoors", "Others"]
       var allYear1 = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"]
 
       // Reformat the data: we need an array of arrays of {x, y} tuples
@@ -278,11 +425,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       // I strongly advise to have a look to dataReady with
       // console.log(dataReady)
-
-      // A color scale: one color for each group
-      var myColor1 = d3.scaleOrdinal()
-        .domain(allGroup1)
-        .range(d3.schemeSet2);
 
       // Add X axis --> it is a date format
       var x = d3.scaleBand()
@@ -320,11 +462,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .data(dataReady1)
         .enter()
         .append("path")
-          .attr("class", function(d){ return d.name1 })
-          .attr("d", function(d){ return line1(d.values1) } )
-          .attr("stroke", function(d){ return myColor1(d.name1) })
-          .style("stroke-width", 4)
-          .style("fill", "none")
+        .attr("class", function(d){ return d.name1 })
+        .attr("d", function(d){ return line1(d.values1) } )
+        .attr("stroke", function(d){ return getColor(d.name1) })
+        .style("stroke-width", 4)
+        .style("fill", "none")
 
       // Add a legend (interactive)
       svg1
@@ -336,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr('x', function(d,i){ return 50 + (i%2)*120})
             .attr('y', function(d,i){ return 30 + i*15})
             .text(function(d) { return d.name1; })
-            .style("fill", function(d){ return myColor1(d.name1) })
+            .style("fill", function(d){ return getColor(d.name1) })
             .style("font-size", 15)
           .on("click", function(d){
             // is the element currently visible ?
@@ -371,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
     d3.csv("https://raw.githubusercontent.com/ctaverni/whatareyoudrinking/clara/data/financialdata.csv", function(data) {
 
       // List of groups (here I have one group per column)
-      var allGroup = ["Molson-Coors", "ABinBev", "Heineken", "Carlsberg", "Asahi", "Diageo"]
+      var allGroup = ["Molson-Coors", "AB-InBev", "Heineken", "Carlsberg", "Asahi", "Diageo"]
       var allYear = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"]
 
       // Reformat the data: we need an array of arrays of {x, y} tuples
@@ -385,11 +527,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       // I strongly advise to have a look to dataReady with
       // console.log(dataReady)
-
-      // A color scale: one color for each group
-      var myColor = d3.scaleOrdinal()
-        .domain(allGroup)
-        .range(d3.schemeSet2);
 
       // Add X axis --> it is a date format
       var x = d3.scaleBand()
@@ -430,7 +567,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .append("path")
           .attr("class", function(d){ return d.name })
           .attr("d", function(d){ return line(d.values) } )
-          .attr("stroke", function(d){ return myColor(d.name) })
+          .attr("stroke", function(d){ return getColor(d.name) })
           .style("stroke-width", 4)
           .style("fill", "none")
 
@@ -446,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr('x', 50)
             .attr('y', function(d,i){ return 30 + i*25})
             .text(function(d) { return d.name; })
-            .style("fill", function(d){ return myColor(d.name) })
+            .style("fill", function(d){ return getColor(d.name) })
             .style("font-size", 15)
           .on("click", function(dn){
             // is the element currently visible ?
@@ -473,54 +610,105 @@ document.addEventListener("DOMContentLoaded", function () {
           "translate(" + margin.left + "," + margin.top + ")");
 
     // Parse the Data
-    d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(data) {
+    d3.csv("https://raw.githubusercontent.com/ctaverni/whatareyoudrinking/clara/data/market.csv", function(data) {
+      // X axis
+      var x = d3.scaleBand()
+        .range([ 0, width ])
+        .domain(data.map(function(d) { return d.Companies; }))
+        .padding(0.2);
+      var xAxis1 = svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+      xAxis1.select("path") //Axis 
+        .style("stroke","white");
+      xAxis1.selectAll("line") //ticks
+        .style("stroke","white")
+      xAxis1.selectAll("text")
+        .attr("fill", "white")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end")
+        .style("color", "white");
 
-    // X axis
-    var x = d3.scaleBand()
-    .range([ 0, width ])
-    .domain(data.map(function(d) { return d.Country; }))
-    .padding(0.2);
-    svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-    .attr("transform", "translate(-10,0)rotate(-45)")
-    .style("text-anchor", "end");
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 55])
+        .range([ height, 0]);
+      var yAxis1 = svg.append("g")
+        .call(d3.axisLeft(y));
+      yAxis1.select("path") //Axis 
+        .style("stroke","white");
+      yAxis1.selectAll("line") //ticks
+        .style("stroke","white")
+      yAxis1.selectAll("text")
+        .attr("fill", "white")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end")
+        .style("color", "white");
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-    .domain([0, 13000])
-    .range([ height, 0]);
-    svg.append("g")
-    .call(d3.axisLeft(y));
+      // ----------------
+      // Create a tooltip
+      // ----------------
+      var tooltip = d3.select(".barplot-marketpart")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "transparent")
+        .style("border", "solid")
+        .style("color", "white")
+        .style("text-color", "white")
+        .style("border-radius", "5px")
+        .style("padding", "10px");
+        //.style("top",  (d3.mouse(this)[1]) + "px")
+        //.style("left", (d3.mouse(this)[0]) + "px");
 
-    // Bars
-    svg.selectAll("mybar")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("x", function(d) { return x(d.Country); })
-    .attr("width", x.bandwidth())
-    .attr("fill", "#69b3a2")
-    // no bar at the beginning thus:
-    .attr("height", function(d) { return height - y(0); }) // always equal to 0
-    .attr("y", function(d) { return y(0); })
+      // Three function that change the tooltip when user hover / move / leave a cell
+      var mouseover = function(d) {
+        tooltip
+            .html("Company: " + d.Companies + "<br>" + "Market part: " + d.Values + "%")
+            .style("opacity", 1)
+      }
+      var mousemove = function(d) {
+        tooltip
+          .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]) + "px")
+      }
+      var mouseleave = function(d) {
+        tooltip
+          .style("opacity", 0)
+      }
 
-    // Animation
-    svg.selectAll("rect")
-    .transition()
-    .duration(800)
-    .attr("y", function(d) { return y(d.Value); })
-    .attr("height", function(d) { return height - y(d.Value); })
-    .delay(function(d,i){console.log(i) ; return(i*100)})
+      // Bars
+      svg.selectAll("mybar")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", function(d) { return x(d.Companies); })
+        .attr("width", x.bandwidth())
+        .attr("fill", function(d){ return getColor(d.Companies) })
+        // no bar at the beginning thus:
+        .attr("height", function(d) { return height - y(0); }) // always equal to 0
+        .attr("y", function(d) { return y(0); })
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
 
-    })
+      // Animation
+      svg.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("y", function(d) { return y(d.Value); })
+        .attr("height", function(d) { return height - y(d.Value); })
+        .delay(function(d,i){console.log(i) ; return(i*100)})
+      
+      })
   }
   
+  makemap2electricboogaloo();
   make_barplot_stacked();
   make_lineplot_annualsales();
   make_lineplot_meanratings();
   make_barplot_marketpart();
   makemap();
+
 
 });
